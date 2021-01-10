@@ -17,26 +17,19 @@ function gotMedia(mediastream) {
         return;
     } 
     else {
+        // If is supported, show max/min/step values
         support.innerHTML = JSON.stringify(capabilities.focusDistance)
     }
     document.body.appendChild(support)
     document.body.appendChild(focusInfo)
     focusInfo.innerHTML = 0
+
   // Map focus distance to a slider element.
   const input = document.querySelector('input[type="range"]');
   input.min = capabilities.focusDistance.min;
   input.max = capabilities.focusDistance.max;
   input.step = capabilities.focusDistance.step;
-  console.log(input.value)
   input.value = track.getSettings().focusDistance;
-  console.log(input.value)
-
-  track.applyConstraints({
-    advanced: [{
-      focusMode: "manual",
-      focusDistance: 255
-    }]
-  })
 
   input.oninput = function(event) {
       focusInfo.innerHTML = event.target.value
@@ -47,5 +40,4 @@ function gotMedia(mediastream) {
       }]
     });
   };
-  input.hidden = false;
 }
