@@ -27,7 +27,16 @@ function gotMedia(mediastream) {
   input.min = capabilities.focusDistance.min;
   input.max = capabilities.focusDistance.max;
   input.step = capabilities.focusDistance.step;
+  console.log(input.value)
   input.value = track.getSettings().focusDistance;
+  console.log(input.value)
+
+  track.applyConstraints({
+    advanced: [{
+      focusMode: "manual",
+      focusDistance: 255
+    }]
+  })
 
   input.oninput = function(event) {
       focusInfo.innerHTML = event.target.value
