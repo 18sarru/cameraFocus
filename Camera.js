@@ -1,5 +1,5 @@
 navigator.mediaDevices
-  .getUserMedia({ video: true })
+  .getUserMedia({ video: {facingMode: "environment"}})
   .then(gotMedia)
   .catch(err => console.error("getUserMedia() failed: ", err));
 
@@ -35,8 +35,7 @@ function gotMedia(mediastream) {
     advanced: [{
       focusMode: "manual",
       focusDistance: 255
-    }],
-    facingMode: { exact: "environment" }
+    }]
   })
 
   input.oninput = function(event) {
