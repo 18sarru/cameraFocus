@@ -7,6 +7,7 @@ function gotMedia(mediastream) {
   const video = document.querySelector("video");
   video.srcObject = mediastream;
   const support = document.createElement('p')
+  const focusInfo = document.createElement('p')
   const track = mediastream.getVideoTracks()[0];
   const capabilities = track.getCapabilities();
 
@@ -19,7 +20,8 @@ function gotMedia(mediastream) {
         support.innerHTML = "Supported"
     }
     document.body.appendChild(support)
-
+    document.body.appendChild(focusInfo)
+    focusInfo.innerHTML = 0
   // Map focus distance to a slider element.
   const input = document.querySelector('input[type="range"]');
   input.min = capabilities.focusDistance.min;
@@ -28,6 +30,7 @@ function gotMedia(mediastream) {
   input.value = track.getSettings().focusDistance;
 
   input.oninput = function(event) {
+      focusInfo.innerHTML = event.target.value
     track.applyConstraints({
       advanced: [{
         focusMode: "manual",
