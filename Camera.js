@@ -17,7 +17,7 @@ function gotMedia(mediastream) {
         return;
     } 
     else {
-        support.innerHTML = "Supported"
+        support.innerHTML = JSON.stringify(capabilities.focusDistance)
     }
     document.body.appendChild(support)
     document.body.appendChild(focusInfo)
