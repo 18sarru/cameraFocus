@@ -27,8 +27,8 @@ function gotMedia(mediastream) {
   // Map focus distance to a slider element.
   const input = document.querySelector('input[type="range"]');
   input.min = capabilities.focusDistance.min;
-  input.max = capabilities.focusDistance.max;
-  input.step = capabilities.focusDistance.step;
+  input.max = 255;
+  input.step = 5;
   input.value = track.getSettings().focusDistance;
 
   input.oninput = function(event) {
