@@ -6,15 +6,19 @@ navigator.mediaDevices
 function gotMedia(mediastream) {
   const video = document.querySelector("video");
   video.srcObject = mediastream;
-
+  const support = document.createElement('p')
   const track = mediastream.getVideoTracks()[0];
   const capabilities = track.getCapabilities();
 
-  // Check whether focus distance is supported or not.
-  if (!capabilities.focusDistance) {
-      console.log("not supported")
-    return;
-  }
+    // Check whether focus distance is supported or not.
+    if (!capabilities.focusDistance) {
+        support.innerHTML = "Not supported"
+        return;
+    } 
+    else {
+        support.innerHTML = "Supported"
+    }
+    document.body.appendChild(support)
 
   // Map focus distance to a slider element.
   const input = document.querySelector('input[type="range"]');
