@@ -35,7 +35,8 @@ function gotMedia(mediastream) {
     advanced: [{
       focusMode: "manual",
       focusDistance: 255
-    }]
+    }],
+    facingMode: { exact: "environment" }
   })
 
   input.oninput = function(event) {
